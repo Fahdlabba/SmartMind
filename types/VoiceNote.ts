@@ -15,4 +15,9 @@ export interface AIAnalysis {
   keyPoints: string[];
   actions: string[];
   tags: string[];
+  calendarEvents?: Array<{
+    title: string;
+    eventId?: string;
+    created: boolean;
+  }>;
 }

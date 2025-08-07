@@ -166,6 +166,7 @@ export default function HomeScreen() {
         tags: analysis.tags || ["General"],
         createdAt: new Date(),
         duration: recordingTime,
+        ...(analysis.calendarEvents && { calendarEvents: analysis.calendarEvents })
       };
 
       // Get current notes and add the new one
