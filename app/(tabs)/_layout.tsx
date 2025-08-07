@@ -43,15 +43,18 @@ export default function TabLayout() {
           ),
         }}
       />
+
       <Tabs.Screen
         name="explore"
         options={{
-          title: "Notes",
+          title: "Explore",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="albums" size={size} color={color} />
+            <Ionicons name="search" size={size} color={color} />
           ),
         }}
       />
+
+      
     </Tabs>
   );
 }

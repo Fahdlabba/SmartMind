@@ -157,7 +157,7 @@ export const VoiceNoteCard: React.FC<{
           />
         </Pressable>
         <View style={styles.titleSection}>
-          <Text style={styles.title} numberOfLines={1}>
+          <Text style={styles.title} numberOfLines={2}>
             {note.title}
           </Text>
           <Text style={styles.metaInfo}>
@@ -226,6 +226,46 @@ export const VoiceNoteCard: React.FC<{
                       color={Colors.secondary}
                     />
                     <Text style={styles.actionText}>{action}</Text>
+                  </LinearGradient>
+                ))}
+              </View>
+            </View>
+          )}
+
+          {/* CALENDAR EVENTS - PRIMARY FOCUS */}
+          {(note as any).calendarEvents?.length > 0 && (
+            <View style={styles.primarySection}>
+              <View style={styles.sectionHeader}>
+                <Ionicons
+                  name="calendar"
+                  size={16}
+                  color="#FF9500"
+                />
+                <Text style={styles.primarySectionTitle}>Calendar Events Created</Text>
+              </View>
+              <View style={styles.calendarEventsContainer}>
+                {(note as any).calendarEvents.map((event: any, index: number) => (
+                  <LinearGradient
+                    key={index}
+                    colors={[
+                      "rgba(255, 149, 0, 0.15)",
+                      "rgba(255, 149, 0, 0.05)",
+                    ]}
+                    style={styles.calendarEventCard}
+                  >
+                    <Ionicons
+                      name="calendar-outline"
+                      size={14}
+                      color="#FF9500"
+                    />
+                    <Text style={styles.calendarEventText}>{event.title}</Text>
+                    {event.created && (
+                      <Ionicons
+                        name="checkmark-circle"
+                        size={14}
+                        color="#32CD32"
+                      />
+                    )}
                   </LinearGradient>
                 ))}
               </View>
@@ -363,6 +403,25 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   actionText: {
+    fontSize: 15,
+    color: Colors.text,
+    fontWeight: "500",
+    flex: 1,
+    lineHeight: 20,
+  },
+
+  // CALENDAR EVENTS STYLES
+  calendarEventsContainer: { gap: 8 },
+  calendarEventCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 12,
+    borderRadius: 12,
+    borderLeftWidth: 3,
+    borderLeftColor: "#FF9500",
+    gap: 10,
+  },
+  calendarEventText: {
     fontSize: 15,
     color: Colors.text,
     fontWeight: "500",
